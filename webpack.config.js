@@ -11,6 +11,10 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   resolve: {
@@ -25,5 +29,6 @@ module.exports = {
     static: {
       directory: path.join(__dirname, './'),
     },
+    historyApiFallback: true,
   },
 };
