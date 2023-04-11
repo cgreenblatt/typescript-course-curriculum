@@ -1,21 +1,21 @@
-import { PostType, Id, ItemType, StoryType } from '../models/api';
+import { PostT, Id, ItemType, StoryType } from '../models/api';
 
 const api = `https://hacker-news.firebaseio.com/v0`;
 const json = '.json?print=pretty';
 
-function removeDead(posts: PostType[]) {
+function removeDead(posts: PostT[]) {
   return posts.filter(Boolean).filter(({ dead }) => dead !== true);
 }
 
-function removeDeleted(posts: PostType[]) {
+function removeDeleted(posts: PostT[]) {
   return posts.filter(({ deleted }) => deleted !== true);
 }
 
-function onlyComments(posts: PostType[]) {
+function onlyComments(posts: PostT[]) {
   return posts.filter(({ type }: { type: ItemType }) => type === 'comment');
 }
 
-function onlyPosts(posts: PostType[]) {
+function onlyPosts(posts: PostT[]) {
   return posts.filter(({ type }: { type: ItemType }) => type === 'story');
 }
 
@@ -29,7 +29,7 @@ export function fetchComments(ids: Id[]) {
   );
 }
 
-export function fetchMainPosts(type: StoryType) {
+export function fetchMainPosts(type: StoryType): Promise<PostT[]> {
   return fetch(`${api}/${type}stories${json}`)
     .then((res) => res.json())
     .then((ids) => {

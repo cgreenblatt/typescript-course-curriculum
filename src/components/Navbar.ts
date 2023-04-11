@@ -1,12 +1,8 @@
 import ThemeButton from './ThemeButton';
 import Link from './Link';
+import { LinkT } from '../models/index';
 
-interface LinkType {
-  text: string;
-  path: string;
-}
-
-export default function Navbar(links: LinkType[]): HTMLElement {
+export default function Navbar(links: LinkT[]): HTMLElement {
   const navbarNav = document.createElement('nav');
   navbarNav.className = 'row space-between';
   const navbarUl = document.createElement('ul');

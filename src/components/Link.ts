@@ -1,4 +1,4 @@
-import { navigate } from '../navigate/navigate';
+import { notifyController } from '../controller/controller';
 
 type PathType =
   | string
@@ -14,7 +14,7 @@ export default function Link(text: string, path: PathType): HTMLAnchorElement {
     e.preventDefault();
     const pathString = typeof path === 'string' ? path : path.getPath(path.id);
     window.history.pushState({}, '', pathString);
-    navigate();
+    notifyController();
   });
 
   return linkAnchor;

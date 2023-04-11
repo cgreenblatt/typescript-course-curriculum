@@ -4,3 +4,8 @@ export function formatDate(timestamp: number) {
     minute: 'numeric',
   });
 }
+
+export function getUrlParam(param: string) {
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  return urlSearchParams.get(param);
+}

@@ -1,8 +1,8 @@
 export type ItemType = 'job' | 'story' | 'comment' | 'poll' | 'pollopt';
 export type StoryType = 'new' | 'top';
-export type Id = number;
+export type Id = string;
 
-export interface Item {
+export interface ItemT {
   id: Id;
   deleted?: boolean;
   type: ItemType;
@@ -21,8 +21,8 @@ export interface Item {
   descendants?: number;
 }
 
-export type PostType = Pick<
-  Item,
+export type PostT = Pick<
+  ItemT,
   | 'by'
   | 'descendants'
   | 'deleted'
@@ -36,4 +36,12 @@ export type PostType = Pick<
   | 'url'
 >;
 
-export type PostMetaInfo = Pick<PostType, 'by' | 'time' | 'id' | 'descendants'>;
+export interface UserT {
+  id: Id;
+  about?: string;
+  created: number;
+  karma?: number;
+  submitted: Id[];
+}
+
+export type PostMetaInfo = Pick<PostT, 'by' | 'time' | 'id' | 'descendants'>;
