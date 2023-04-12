@@ -1,4 +1,4 @@
-import { PostT, UserT } from './api';
+import { CommentT, PostT, UserT } from './api';
 
 export interface UserResponseT {
   user: UserT;
@@ -7,7 +7,7 @@ export interface UserResponseT {
 export type PostsResponseT = PostT[];
 export interface PostResponseT {
   post: PostT;
-  comments: PostT[];
+  comments: CommentT[];
 }
 
 export type RouteUnionT = PostsRouteT | UserRouteT | PostRouteT;

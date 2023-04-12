@@ -14,7 +14,7 @@ import {
   RouteUnionT,
   ResponseUnionT,
 } from './models/index';
-import { UserT, PostT } from './models/api';
+import { UserT, PostT, CommentT } from './models/api';
 import {
   fetchMainPosts,
   fetchUser,
@@ -35,14 +35,13 @@ const postRoute: PostRouteT = {
     if (!id) throw Error();
     const post: PostT = await fetchItem(id);
     if (!post) throw Error();
-    const comments: PostT[] = await fetchComments(post.kids || []);
+    const comments: CommentT[] = await fetchComments(post.kids || []);
     return { post, comments };
   },
 };
 
 const newPostsRoute: PostsRouteT = {
   kind: 'new',
-  // getPostsComponent: NewPosts,
   getPostsComponent: (posts: PostsResponseT) => Posts({ kind: 'new', posts }),
   pathRegExp: RegExp(/^\/new$/),
   apiRequestCallback: (): Promise<PostT[]> => fetchMainPosts('new'),
@@ -59,7 +58,7 @@ const userRoute: UserRouteT = {
   kind: 'user',
   getUserComponent: User,
   pathRegExp: RegExp(/^\/user$/),
-  apiRequestCallback: async () => {
+  apiRequestCallback: async (): Promise<UserResponseT> => {
     const id = getUrlParam('id');
     if (!id) throw Error();
     const user: UserT = await fetchUser(id);

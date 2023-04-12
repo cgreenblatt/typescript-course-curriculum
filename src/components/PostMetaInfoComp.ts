@@ -1,4 +1,4 @@
-import { PostMetaInfo } from '../models/api';
+import { PostMetaInfoT } from '../models/api';
 import { formatDate } from '../utils/helpers';
 
 export default function PostMetaInfoComp({
@@ -6,7 +6,7 @@ export default function PostMetaInfoComp({
   time,
   id,
   descendants,
-}: PostMetaInfo): HTMLDivElement {
+}: PostMetaInfoT): HTMLDivElement {
   const postMetaInfoDiv = document.createElement('div');
   postMetaInfoDiv.className = `meta-info-light`;
 

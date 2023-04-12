@@ -1,22 +1,22 @@
-export type ItemType = 'job' | 'story' | 'comment' | 'poll' | 'pollopt';
-export type StoryType = 'new' | 'top';
-export type Id = string;
+export type ItemCategoryT = 'story' | 'comment';
+export type StoryCategoryT = 'new' | 'top';
+export type IdT = string;
 
 export interface ItemT {
-  id: Id;
+  id: IdT;
   deleted?: boolean;
-  type: ItemType;
+  type: ItemCategoryT;
   by: string;
   time: number;
   text: string;
   dead?: boolean;
-  parent: Id;
-  poll: Id;
-  kids: Id[];
+  parent: IdT;
+  poll: IdT;
+  kids: IdT[];
   url: string;
   score: number;
   title: string;
-  parts: Id[];
+  parts: IdT[];
   comment: number;
   descendants?: number;
 }
@@ -30,18 +30,32 @@ export type PostT = Pick<
   | 'id'
   | 'kids'
   | 'score'
+  | 'text'
   | 'time'
   | 'title'
   | 'type'
   | 'url'
 >;
 
+export type CommentT = Pick<
+  ItemT,
+  | 'by'
+  | 'id'
+  | 'kids'
+  | 'parent'
+  | 'text'
+  | 'time'
+  | 'type'
+  | 'dead'
+  | 'deleted'
+>;
+
 export interface UserT {
-  id: Id;
+  id: IdT;
   about?: string;
   created: number;
   karma?: number;
-  submitted: Id[];
+  submitted: IdT[];
 }
 
-export type PostMetaInfo = Pick<PostT, 'by' | 'time' | 'id' | 'descendants'>;
+export type PostMetaInfoT = Pick<PostT, 'by' | 'time' | 'id' | 'descendants'>;
