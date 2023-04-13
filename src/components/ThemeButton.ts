@@ -1,4 +1,4 @@
-import { getTheme, toggleTheme } from './ThemedComponent';
+import { toggleTheme, subscribeToTheme, ThemeT } from '../state/Theme';
 
 export default function ThemeButton(): HTMLButtonElement {
   const flashlight = '&#128294;';
@@ -7,10 +7,9 @@ export default function ThemeButton(): HTMLButtonElement {
   themeButton.className = 'btn-clear';
   themeButton.style.fontSize = '30px';
   themeButton.innerHTML = flashlight;
-  function handleToggleTheme() {
-    toggleTheme();
-    themeButton.innerHTML = getTheme() === 'light' ? flashlight : lightBulb;
-  }
-  themeButton.addEventListener('click', handleToggleTheme);
+  subscribeToTheme((theme: ThemeT) => {
+    themeButton.innerHTML = theme === 'light' ? flashlight : lightBulb;
+  });
+  themeButton.addEventListener('click', toggleTheme);
   return themeButton;
 }

@@ -1,7 +1,7 @@
 import { LinkT } from '../models/index';
 import Navbar from './Navbar';
 import { addRouter } from '../navigate/navigate';
-import ThemedComponent from './ThemedComponent';
+import { subscribeToTheme, ThemeT, getTheme } from '../state/Theme';
 
 export default function App(navLinksP: LinkT[]): void {
   const appDiv = document.createElement('div');
@@ -10,7 +10,12 @@ export default function App(navLinksP: LinkT[]): void {
   containerDiv.className = 'container';
   containerDiv.appendChild(Navbar(navLinksP));
   addRouter(containerDiv);
-  const themedDiv = ThemedComponent(containerDiv);
-  appDiv.appendChild(themedDiv);
+  const themeDiv = document.createElement('div');
+  themeDiv.className = getTheme();
+  subscribeToTheme((theme: ThemeT) => {
+    themeDiv.className = theme === 'light' ? 'light' : 'dark';
+  });
+  themeDiv.appendChild(containerDiv);
+  appDiv.appendChild(themeDiv);
   document.body.appendChild(appDiv);
 }

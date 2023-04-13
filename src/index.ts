@@ -42,14 +42,14 @@ const postRoute: PostRouteT = {
 
 const newPostsRoute: PostsRouteT = {
   kind: 'new',
-  getPostsComponent: (posts: PostsResponseT) => Posts({ kind: 'new', posts }),
+  getPostsComponent: (posts: PostsResponseT) => Posts(posts),
   pathRegExp: RegExp(/^\/new$/),
   apiRequestCallback: (): Promise<PostT[]> => fetchMainPosts('new'),
 };
 
 const topPostsRoute: PostsRouteT = {
   kind: 'top',
-  getPostsComponent: (posts: PostsResponseT) => Posts({ kind: 'top', posts }),
+  getPostsComponent: (posts: PostsResponseT) => Posts(posts),
   pathRegExp: RegExp(/^\/$/),
   apiRequestCallback: (): Promise<PostT[]> => fetchMainPosts('top'),
 };
