@@ -1,4 +1,4 @@
-import { notifyController } from '../controller/controller';
+import { setPath } from '../state/path';
 
 export default function Link(
   text: string,
@@ -12,7 +12,7 @@ export default function Link(
   linkAnchor.addEventListener('click', (e) => {
     e.preventDefault();
     window.history.pushState({}, '', path);
-    notifyController();
+    setPath();
   });
 
   return linkAnchor;

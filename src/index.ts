@@ -24,7 +24,6 @@ import {
 } from './utils/api';
 import { getUrlParam } from './utils/helpers';
 import App from './components/App';
-import { initController, renderNewRoute } from './controller/controller';
 
 const postRoute: PostRouteT = {
   kind: 'post',
@@ -103,6 +102,4 @@ const navLinks: LinkT[] = [
   },
 ];
 
-App(navLinks);
-initController(routes);
-renderNewRoute();
+App(navLinks, routes);
