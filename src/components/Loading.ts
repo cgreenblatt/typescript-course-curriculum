@@ -1,14 +1,15 @@
 let intervalId: number;
 
-export default function Loading(): HTMLDivElement {
-  const loadingDiv = document.createElement('div');
+export default function Loading(): HTMLElement {
+  const loadingH1 = document.createElement('h1');
   let dots: string = '';
-  loadingDiv.textContent = 'Loading ';
+  loadingH1.textContent = 'Loading ';
+  loadingH1.className = 'center-text';
   intervalId = window.setInterval(() => {
     dots = dots.length < 3 ? dots.concat('.') : '';
-    loadingDiv.textContent = `Loading ${dots}`;
+    loadingH1.textContent = `Loading ${dots}`;
   }, 300);
-  return loadingDiv;
+  return loadingH1;
 }
 
 export function clearLoading() {
