@@ -1,4 +1,4 @@
-import { setPath } from '../state/path';
+import { setPath } from '../state/pathState';
 
 export default function Link(
   text: string,

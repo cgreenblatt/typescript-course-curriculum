@@ -1,7 +1,7 @@
 import { PostsResponseT } from '../models/index';
 import PostMetaInfo from './PostMetaInfo';
 
-export default function Posts(posts: PostsResponseT): HTMLElement {
+export default function Posts(posts: PostsResponseT): HTMLUListElement {
   const postList = document.createElement('ul');
   posts.forEach((post) => {
     const postItem = document.createElement('li');

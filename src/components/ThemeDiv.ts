@@ -1,6 +1,6 @@
-import { subscribeToTheme, ThemeT, getTheme } from '../state/Theme';
+import { subscribeToTheme, ThemeT, getTheme } from '../state/themeState';
 
-export default function ThemeDiv() {
+export default function ThemeDiv(): HTMLDivElement {
   const themeDiv = document.createElement('div');
   themeDiv.className = getTheme();
   subscribeToTheme((theme: ThemeT) => {

@@ -1,7 +1,7 @@
 import { PostMetaInfoT } from '../models/api';
 import { formatDate } from '../utils/helpers';
 import Link from './Link';
-import { subscribeToTheme, ThemeT, getTheme } from '../state/Theme';
+import { subscribeToTheme, ThemeT, getTheme } from '../state/themeState';
 export default function PostMetaInfo({
   by,
   time,

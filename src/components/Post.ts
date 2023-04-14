@@ -8,7 +8,7 @@ export default function Post({
 }: {
   post: PostT;
   comments: CommentT[];
-}): HTMLElement {
+}): HTMLDivElement {
   const div = document.createElement('div');
   const h1 = document.createElement('h1');
   h1.className = 'header';

@@ -1,4 +1,4 @@
-import { toggleTheme, subscribeToTheme, ThemeT } from '../state/Theme';
+import { toggleTheme, subscribeToTheme, ThemeT } from '../state/themeState';
 
 export default function ThemeButton(): HTMLButtonElement {
   const flashlight = '&#128294;';

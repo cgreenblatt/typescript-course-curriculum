@@ -1,5 +1,5 @@
 import { RouteUnionT, ResponseUnionT, RoutesT } from '../models/index';
-import { subscribeToPath } from '../state/path';
+import { subscribeToPath } from '../state/pathState';
 import Loading, { clearLoading } from '../components/Loading';
 import PageNotFound from '../components/PageNotFound';
 import ErrorMsg from '../components/ErrorMsg';
@@ -8,7 +8,7 @@ let routeDiv: HTMLDivElement;
 let routes: RouteUnionT[];
 let getComponent: (route: RouteUnionT, data: ResponseUnionT) => HTMLElement;
 
-export default function Route(routesP: RoutesT) {
+export default function Route(routesP: RoutesT): HTMLDivElement {
   routes = routesP.routes;
   getComponent = routesP.getComponent;
   subscribeToPath(renderRoute);

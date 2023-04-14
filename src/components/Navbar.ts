@@ -1,7 +1,7 @@
 import ThemeButton from './ThemeButton';
 import Link from './Link';
 import { LinkT } from '../models/index';
-import { subscribeToPath } from '../state/path';
+import { subscribeToPath } from '../state/pathState';
 
 export default function Navbar(links: LinkT[]): HTMLElement {
   const anchorLinks: { linkEl: HTMLAnchorElement; path: string }[] = [];

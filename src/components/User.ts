@@ -3,7 +3,7 @@ import { UserT } from '../models/api';
 import { formatDate } from '../utils/helpers';
 import Posts from './Posts';
 
-function userMetaInfo(user: UserT) {
+function userMetaInfo(user: UserT): HTMLDivElement {
   const div = document.createElement('div');
   div.className = 'meta-info-light';
   const joinedSpan = document.createElement('span');
@@ -21,7 +21,7 @@ function userMetaInfo(user: UserT) {
   return div;
 }
 
-export default function User(userData: UserResponseT): HTMLElement {
+export default function User(userData: UserResponseT): HTMLDivElement {
   const { user, posts } = userData;
   const div = document.createElement('div');
   const h1 = document.createElement('h1');
