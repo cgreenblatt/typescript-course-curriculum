@@ -48,7 +48,6 @@ function renderRoute(path: string) {
       apiRequestCallback()
         .then((data) => {
           renderRouteComponent(getComponent(route, data));
-          console.log(data);
           clearLoading();
         })
         .catch(({ message }) => {
