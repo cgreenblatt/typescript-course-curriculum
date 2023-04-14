@@ -1,5 +1,4 @@
 export type ThemeT = 'light' | 'dark';
-let divElement: HTMLElement | undefined;
 
 const callbacks: ((state: ThemeT) => void)[] = [];
 let state: 'light' | 'dark' = 'light';
