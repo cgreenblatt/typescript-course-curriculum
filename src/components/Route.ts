@@ -2,6 +2,7 @@ import { RouteUnionT, ResponseUnionT, RoutesT } from '../models/index';
 import { subscribeToPath } from '../state/path';
 import Loading, { clearLoading } from '../components/Loading';
 import PageNotFound from '../components/PageNotFound';
+import ErrorMsg from '../components/ErrorMsg';
 
 let routeDiv: HTMLDivElement;
 let routes: RouteUnionT[];
@@ -50,8 +51,10 @@ function renderRoute(path: string) {
           console.log(data);
           clearLoading();
         })
-        .catch(() => {
-          renderRouteComponent(PageNotFound());
+        .catch(({ message }) => {
+          renderRouteComponent(
+            message === '404' ? PageNotFound() : ErrorMsg(message)
+          );
         });
     }
   }

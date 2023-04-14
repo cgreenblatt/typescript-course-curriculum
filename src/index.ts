@@ -31,9 +31,9 @@ const postRoute: PostRouteT = {
   pathRegExp: RegExp(/^\/post$/),
   apiRequestCallback: async (): Promise<PostResponseT> => {
     const id = getUrlParam('id');
-    if (!id) throw Error();
+    if (!id) throw new Error('404');
     const post: PostT = await fetchItem(id);
-    if (!post) throw Error();
+    if (!post) throw new Error('404');
     const comments: CommentT[] = await fetchComments(post.kids || []);
     return { post, comments };
   },
@@ -59,9 +59,9 @@ const userRoute: UserRouteT = {
   pathRegExp: RegExp(/^\/user$/),
   apiRequestCallback: async (): Promise<UserResponseT> => {
     const id = getUrlParam('id');
-    if (!id) throw Error();
+    if (!id) throw new Error('404');
     const user: UserT = await fetchUser(id);
-    if (!user) throw Error();
+    if (!user) throw new Error('404');
     const posts: PostT[] = await fetchPosts(user.submitted.slice(0, 30));
     return { user, posts };
   },
