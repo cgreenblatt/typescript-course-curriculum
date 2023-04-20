@@ -35,7 +35,7 @@ export function fetchItem(id: IdT): Promise<ItemT> {
 
 export function fetchComments(ids: IdT[]): Promise<CommentT[]> {
   return Promise.all(ids.map(fetchItem)).then((comments: CommentT[]) =>
-    removeDeleted<CommentT>(onlyComments(removeDead<CommentT>(comments)))
+    removeDeleted(onlyComments(removeDead(comments)))
   );
 }
 
@@ -61,6 +61,6 @@ export function fetchUser(id: IdT): Promise<UserT> {
 
 export function fetchPosts(ids: IdT[]): Promise<PostT[]> {
   return Promise.all(ids.map(fetchItem)).then((posts: PostT[]) =>
-    removeDeleted<PostT>(onlyPosts(removeDead<PostT>(posts)))
+    removeDeleted(onlyPosts(removeDead(posts)))
   );
 }
