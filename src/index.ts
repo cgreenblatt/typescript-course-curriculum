@@ -71,18 +71,12 @@ const routes: RoutesT = {
   getComponent: (route: RouteUnionT, data: ResponseUnionT) => {
     switch (route.kind) {
       case 'top':
-      case 'new': {
-        const postsArray = <PostsResponseT>data;
-        return route.getPostsComponent(postsArray);
-      }
-      case 'user': {
-        const userData = <UserResponseT>data;
-        return route.getUserComponent(userData);
-      }
-      case 'post': {
-        const postData = <PostResponseT>data;
-        return route.getPostComponent(postData);
-      }
+      case 'new':
+        return route.getPostsComponent(data as PostsResponseT);
+      case 'user':
+        return route.getUserComponent(data as UserResponseT);
+      case 'post':
+        return route.getPostComponent(data as PostResponseT);
       default:
         const _exhaustiveCheck: never = route;
         return _exhaustiveCheck;
