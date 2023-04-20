@@ -15,6 +15,7 @@ export default function Post({
   const titleAnchor = document.createElement('a');
   titleAnchor.textContent = post.title;
   titleAnchor.className = 'link';
+  titleAnchor.href = post.url;
   h1.appendChild(titleAnchor);
   div.appendChild(h1);
   const postMetaInfo = PostMetaInfo(post);
